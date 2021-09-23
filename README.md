@@ -1,1 +1,2 @@
-# db-4-ds-Rebe
+# Repo para tareas DB for Data Science :)
+Nombre: Rebeca Angulo Rojas
