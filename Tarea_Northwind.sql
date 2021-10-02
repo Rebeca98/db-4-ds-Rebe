@@ -21,11 +21,41 @@ select o.order_id , o.ship_country
 from orders o 
 where o.ship_country != 'USA';
 
+-- otra forma de ver el problema 
+
+select count(*)
+from orders o 
+where o.ship_country != 'USA';
+
+select count(*)
+from orders o, customers c 
+join customers c using (customer_id)
+where o.customer_id = c.customer_id and c.country != 'USA';
+
+select count(*)
+from orders o
+join customers c using (customer_id)
+where c.country != 'USA';
+
+
 --4. Qué productos de los que transportamos son quesos?
 select p.product_name 
 from products p, categories c 
 where c.description like '%Cheese%'
 and c.category_id = p.category_id;
+
+select count(*)
+from products p
+where p.category_id = (
+	select c.category_id
+	from categories c 
+	where c.description = "Cheeses"
+);
+
+select count(*)
+from products p 
+where p.category_id ) = 4;
+
 
 
 --5. Qué ordenes van a Bélgica o Francia?
